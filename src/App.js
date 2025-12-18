@@ -4,6 +4,7 @@ import axios from "axios";
 const BACKEND_URL = "https://ai-calling-agent-backend-2wgo.onrender.com";
 
 function App() {
+  const [statusFilter, setStatusFilter] = useState("all");
   const [search, setSearch] = useState("");
   const [customers, setCustomers] = useState([]);
 
@@ -35,6 +36,17 @@ function App() {
       onChange={(e) => setSearch(e.target.value)}
       style={{ padding: "6px", marginBottom: "10px" }}
     />
+      {/* Status filter */}
+<select
+  value={statusFilter}
+  onChange={(e) => setStatusFilter(e.target.value)}
+  style={{ marginLeft: "10px", padding: "6px" }}
+>
+  <option value="all">All</option>
+  <option value="pending">Pending</option>
+  <option value="delayed">Delayed</option>
+  <option value="delivered">Delivered</option>
+</select>
 
       <table border="1" cellPadding="10">
         <thead>
@@ -50,6 +62,7 @@ function App() {
           {customers
              .filter(
                  (c) =>
+                  (statusFilter === "all" || c.order_status === statusFilter) &&
                   c.name.toLowerCase().includes(search.toLowerCase()) ||
                   c.number.includes(search)
             )

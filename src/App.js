@@ -37,7 +37,7 @@ function App() {
       style={{ padding: "6px", marginBottom: "10px" }}
     />
       {/* Status filter */}
-<select
+   <select
   value={statusFilter}
   onChange={(e) => setStatusFilter(e.target.value)}
   style={{ marginLeft: "10px", padding: "6px" }}
@@ -46,7 +46,7 @@ function App() {
   <option value="pending">Pending</option>
   <option value="delayed">Delayed</option>
   <option value="delivered">Delivered</option>
-</select>
+   </select>
 
       <table border="1" cellPadding="10">
         <thead>

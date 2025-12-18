@@ -43,9 +43,9 @@ function App() {
   style={{ marginLeft: "10px", padding: "6px" }}
 >
   <option value="all">All</option>
-  <option value="pending">pending</option>
-  <option value="delayed">delayed</option>
-  <option value="delivered">delivered</option>
+  <option value="pending">Pending</option>
+  <option value="delayed">Delayed</option>
+  <option value="delivered">Delivered</option>
    </select>
 
       <table border="1" cellPadding="10">

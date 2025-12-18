@@ -4,6 +4,7 @@ import axios from "axios";
 const BACKEND_URL = "https://ai-calling-agent-backend-2wgo.onrender.com";
 
 function App() {
+  const [search, setSearch] = useState("");
   const [customers, setCustomers] = useState([]);
 
   useEffect(() => {
@@ -26,6 +27,15 @@ function App() {
     <div style={{ padding: "20px" }}>
       <h2>AI Calling Agent</h2>
 
+  {/* Search bar */}
+    <input
+      type="text"
+      placeholder="Search by name or number"
+      value={search}
+      onChange={(e) => setSearch(e.target.value)}
+      style={{ padding: "6px", marginBottom: "10px" }}
+    />
+
       <table border="1" cellPadding="10">
         <thead>
           <tr>
@@ -37,7 +47,14 @@ function App() {
         </thead>
 
         <tbody>
-          {customers.map((c) => (
+          {customers
+             .filter(
+                 (c) =>
+                  c.name.toLowerCase().includes(search.toLowerCase()) ||
+                  c.number.includes(search)
+            )
+            .map((c) => (
+
             <tr key={c.id}>
               <td>{c.name}</td>
               <td>{c.number}</td>
